@@ -197,6 +197,22 @@ namespace DataStructure
                     {
                         return 0;
                     }
+                }
+        //Pop elements of queue
+        public string DequeuePalindrome()
+        {
+            string reverseWord = "";
+            while (head != null)
+            {
+                if (head == null)
+                {
+                    Console.WriteLine("\nQueue is empty! Nothing to Pop");
+                }
+                Console.WriteLine("DE QUEUED ELEMENT: {0}", head.data);
+                reverseWord = head.data + reverseWord;
+                head = head.next;
+            }
+            return reverseWord;
         }
     }
 }
