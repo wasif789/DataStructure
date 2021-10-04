@@ -117,7 +117,47 @@ namespace DataStructure
                     newNode.next = temp.next;
                     temp.next = newNode;
                 }
+                
+                }
             }
+                //Pep top element
+                public void Pop()
+                {
+                    Peek();
+                    if (IsEmpty() == 1)
+                    {
+                        Console.WriteLine("Pop \")\"");
+                        head = head.next;
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Linked List is Empty!There is nothing to delete");
+                    }
+                }
+                public void Peek()
+                {
+                    if (head != null)
+                    {
+                        Console.WriteLine("Top element is {0}", head.data);
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Linked List is Empty");
+                    }
+                }
+
+                public int IsEmpty()
+                {
+                    if (head != null)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
         }
     }
 }

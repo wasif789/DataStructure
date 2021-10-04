@@ -9,6 +9,8 @@ namespace DataStructure
             Console.WriteLine("Welcome to Datastructure Programs!");
             Console.WriteLine("Enter 1-For Unordered List");
             Console.WriteLine("Enter 2-For Ordered List");
+            Console.WriteLine("Enter 3-Check for Balanced Parentheses in an expression");
+
 
             int ch = Convert.ToInt32(Console.ReadLine());
             switch (ch)
@@ -20,6 +22,10 @@ namespace DataStructure
                 case 2:
                     OrderedList<int> orderedList = new OrderedList<int>();
                     orderedList.GetInput();
+                    break;
+                case 3:
+                    BalanceParentheses<string> balanceParenthesis = new BalanceParentheses<string>();
+                    balanceParenthesis.GetInput();
                     break;
             }    
         }
