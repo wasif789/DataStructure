@@ -16,6 +16,7 @@ namespace DataStructure
             Console.WriteLine("Enter 6-prime and Anagram Queue");
             Console.WriteLine("Enter 7-Number of BST");
             Console.WriteLine("Enter 8-To Search an element in Hash Table");
+            Console.WriteLine("Enter 9-To Print Calender of Given Year and Month");
 
 
             int ch = Convert.ToInt32(Console.ReadLine());
@@ -54,6 +55,10 @@ namespace DataStructure
                 case 8:
                     HashedSlots<int> hashedSlots = new HashedSlots<int>(11);
                     GetInput(hashedSlots);
+                    break;
+                case 9:
+                    Calendar calendar = new Calendar();
+                    calendar.GetInput();
                     break;
             }
 
