@@ -12,7 +12,8 @@ namespace DataStructure
         public static List<int> PalindromeNumbers = new List<int>();
         public static int range = 0, index = 0, change = 0;
         public static int[,] primeNumbers = new int[10, 100];
-        public static CustomLinkedList<int> customLinkedList = new CustomLinkedList<int>();
+        public static CustomLinkedList<int> customStack = new CustomLinkedList<int>();
+        public static CustomLinkedList<int> customQueue = new CustomLinkedList<int>();
 
         //Check prime number from start-End range
         public static void PrimeChecker(int start, int end)
@@ -91,21 +92,35 @@ namespace DataStructure
                         if (SecondString == firstString)
                         {
                             AnagramNumbers[range, index] = primeNumbers[k, l];
-                            customLinkedList.InsertAtFront(primeNumbers[k, l]);
+                            customStack.InsertAtFront(primeNumbers[k, l]);
+                            customQueue.Enqueue(primeNumbers[k, l]);
                             index++;
                             AnagramNumbers[range, index] = primeNumbers[k, q];
                             index++;
-                            customLinkedList.InsertAtFront(primeNumbers[k, q]);
+                            customStack.InsertAtFront(primeNumbers[k, q]);
+                            customQueue.Enqueue(primeNumbers[k, q]);
 
                         }
                     }
                 }
             }
+
+
             Console.WriteLine("\n*************************************************************************************************");
             Console.WriteLine("                  DISPLAYING ANAGRAM STACK IN REVERSE ORDER in Range ({0} - {1})                   ", start, end);
             Console.WriteLine("*************************************************************************************************");
-            //Program 10: Display Anagrams in reverse order
-            customLinkedList.Display();
+            //Program 10: Display Anagrams in reverse order using stack
+            customStack.Display();
+
+
+            Console.WriteLine("\n*************************************************************************************************");
+            Console.WriteLine("                  DISPLAYING ANAGRAM USING QUEUE in Range ({0} - {1})                   ", start, end);
+            Console.WriteLine("*************************************************************************************************");
+            //Program 11: Display Anagrams in Queue
+            customQueue.Display();
+
+
+
             Console.WriteLine("\n---------------- Printing Anagram Array in Range ({0} - {1}) ----------------", start, end);
             //Print Array having anagram
             for (int k = 0; k < 10; k++)
@@ -157,5 +172,4 @@ namespace DataStructure
         }
 
     }
-    
 }

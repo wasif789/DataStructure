@@ -12,7 +12,7 @@ namespace DataStructure
             Console.WriteLine("Enter 3-Check for Balanced Parentheses in an expression");
             Console.WriteLine("Enter 4-simulate banking cash counter");
             Console.WriteLine("Enter 5-Palindrome Checker");
-            Console.WriteLine("Enter 6-Anagram stack in reverse");
+            Console.WriteLine("Enter 6-prime and Anagram Queue");
 
 
             int ch = Convert.ToInt32(Console.ReadLine());
@@ -39,7 +39,7 @@ namespace DataStructure
                     palindrome.CheckPalindrome();
                     break;
                 case 6:
-                    PrimeNumbers<int>.PrimeChecker(0, 100);
+                    PrimeNumbers<int>.PrimeChecker(0, 1000);
                     break;
             }    
         }
