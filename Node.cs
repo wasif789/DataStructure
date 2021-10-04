@@ -8,6 +8,7 @@ namespace DataStructure
     {
         public Node<T> next;
         public T data;
+        public int idata;
         public Node(T data)
         {
             this.data = data;

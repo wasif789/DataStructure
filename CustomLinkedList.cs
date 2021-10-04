@@ -77,12 +77,47 @@ namespace DataStructure
         {
             string StringValues = "";
             Node<T> node = head;
+            StringValues += head.data;
+            node = node.next;
             while (node != null)
             {
-                StringValues += node.data + " ";
+                StringValues += " " + node.data;
                 node = node.next;
             }
             return StringValues;
+        }
+
+        //Method for sorted Insertion
+        public void SortedInsertion(T data)
+        {
+            Node<T> newNode = new Node<T>(data);
+            Node<T> temp = head;
+            if (head == null || newNode.idata <= head.idata)
+            {
+                newNode.next = head;
+                head = newNode;
+            }
+            else if (head.next == null && head.idata < newNode.idata)
+            {
+                head.next = newNode;
+            }
+            else
+            {
+                if (temp.next.idata > newNode.idata)
+                {
+                    newNode.next = temp.next;
+                    temp.next = newNode;
+                }
+                else
+                {
+                    while (temp.next != null && temp.next.idata < newNode.idata)
+                    {
+                        temp = temp.next;
+                    }
+                    newNode.next = temp.next;
+                    temp.next = newNode;
+                }
+            }
         }
     }
 }

@@ -1,1 +1,1 @@
- a newData Linked implementing for used File Text is sample This 
+ Manga This sample is Text File used for implementing Linked List newData a
