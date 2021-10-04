@@ -10,14 +10,16 @@ namespace DataStructure
         public static int month;
         public static int year;
         static string[] months = { "January", "Feburary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
+        public static Queue<CalenderUsingWeekObjects<Calendar>> week = new Queue<CalenderUsingWeekObjects<Calendar>>();
 
+        //Get input(Year and Month) from user
         public void GetInput()
         {
             Console.WriteLine("Enter year of Calenter");
             year = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Enter Month(1-12) of Calenter");
             month = Convert.ToInt32(Console.ReadLine());
-            Header();
+
             CalenderFill();
         }
 
@@ -44,27 +46,40 @@ namespace DataStructure
             int day = 1;
             int startDate = DayFromDate(1, month, year);
             int days = DateTime.DaysInMonth(year, month);
+            List<string> weeks = new List<string>() { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
+
             for (int i = 1; i <= 6; i++)
             {
+                //Create object for each day of a week
+                CalenderUsingWeekObjects<Calendar> weekDayQueue = new CalenderUsingWeekObjects<Calendar>();
                 for (int j = 0; j < 7 && day <= days; j++)
                 {
+                    CalenderUsingWeekObjects<Calendar> calenderUsingWeekObjects;
+                    //If date is empty ,this part is executed
                     if (i == 1 && j < startDate)
                     {
-                        Console.Write("    ");
+                        calenderUsingWeekObjects = new CalenderUsingWeekObjects<Calendar>(weeks[j], "");
+                        weekDayQueue.Append(calenderUsingWeekObjects);
                         continue;
                     }
-                    Console.Write(day);
-                    if (day >= 10)
-                    {
-                        Console.Write("  ");
-                    }
-                    else
-                    {
-                        Console.Write("   ");
-                    }
+                    calenderUsingWeekObjects = new CalenderUsingWeekObjects<Calendar>(weeks[j], Convert.ToString(day));
+                    //Store value of each weekDay object 
+                    weekDayQueue.Append(calenderUsingWeekObjects);
                     day++;
                 }
-                Console.WriteLine("\n");
+                //Enqueue each week object
+                week.Enqueue(weekDayQueue);
+            }
+            Display();
+        }
+
+        //Display all days
+        public void Display()
+        {
+            Header();
+            foreach (var i in week)
+            {
+                i.DisplayWeek();
             }
         }
     }
