@@ -120,8 +120,47 @@ namespace DataStructure
                 
                 }
             }
-                //Pep top element
-                public void Pop()
+        public void Enqueue(T data)
+        {
+            Node<T> newNode = new Node<T>(data);
+            Append(newNode);
+        }
+
+        //Add data at rear
+        public void Append(Node<T> newNode)
+        {
+            if (head == null)
+            {
+                head = newNode;
+            }
+            else
+            {
+                Node<T> temp = GetLastNode();
+                temp.next = newNode;
+
+            }
+        }
+        public Node<T> GetLastNode()
+        {
+            Node<T> temp = head;
+            while (temp.next != null)
+            {
+                temp = temp.next;
+            }
+            return temp;
+        }
+        public void Dequeue()
+        {
+            if (head == null)
+            {
+                Console.WriteLine("\nQueue is empty! Nothing to Pop");
+                return;
+            }
+            Console.WriteLine("\nDE QUEUED ELEMENT: {0}", head.data);
+            head = head.next;
+        }
+        //Pep top element
+        public void Pop()
                 {
                     Peek();
                     if (IsEmpty() == 1)
