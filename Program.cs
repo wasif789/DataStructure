@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace DataStructure
 {
@@ -14,6 +15,7 @@ namespace DataStructure
             Console.WriteLine("Enter 5-Palindrome Checker");
             Console.WriteLine("Enter 6-prime and Anagram Queue");
             Console.WriteLine("Enter 7-Number of BST");
+            Console.WriteLine("Enter 8-To Search an element in Hash Table");
 
 
             int ch = Convert.ToInt32(Console.ReadLine());
@@ -46,10 +48,41 @@ namespace DataStructure
                     NumberOfBST numberOfBST = new NumberOfBST();
                     Console.WriteLine("Enter the size of tree");
                     int number = Convert.ToInt32(Console.ReadLine());
-                    int count = numberOfBST.NumberOfTree(number);
+                    int count = (int)numberOfBST.NumberOfTree(number);
                     Console.WriteLine("Total count of BST with size {0} is: {1}", number, count);
                     break;
-            }    
+                case 8:
+                    HashedSlots<int> hashedSlots = new HashedSlots<int>(11);
+                    GetInput(hashedSlots);
+                    break;
+            }
+
+        }
+        public static void GetInput(HashedSlots<int> hashedSlots)
+        {
+            string filePath = @"C:\Users\wsffa\c#_projects\DataStructure\NumberSlots.txt";
+            string text = File.ReadAllText(filePath);
+            string[] numbers = text.Split(" ");
+            for (int i = 0; i < numbers.Length - 1; i++)
+            {
+                hashedSlots.AddNode(Convert.ToInt32(numbers[i]));
+            }
+            hashedSlots.Display();
+            Console.WriteLine("Enter the number to search:");
+            int searchValue = Convert.ToInt32(Console.ReadLine());
+
+            //Search element in Hash Table
+            if (hashedSlots.Search(searchValue) == 1)
+            {
+                Console.WriteLine("Value {0} is Present in Hash Table", searchValue);
+                File.WriteAllText(filePath, hashedSlots.Display());
+            }
+            else
+            {
+                hashedSlots.AddNode(searchValue);
+                Console.WriteLine("Value {0} is not Present in Hash Table", searchValue);
+                File.WriteAllText(filePath, hashedSlots.Display());
+            }
         }
     }
 }
